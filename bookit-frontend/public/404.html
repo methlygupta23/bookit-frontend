@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; URL='/'" />
+    <script>
+      // GitHub Pages SPA redirect fallback
+      (function() {
+        var redirect = sessionStorage.redirect;
+        if (redirect) {
+          delete sessionStorage.redirect;
+          var location = window.location;
+          var newUrl = location.protocol + '//' + location.host + redirect;
+          location.replace(newUrl);
+        }
+      })();
+    </script>
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+  <script>
+    // If a direct deep link arrives here, store path and go to root
+    if (!sessionStorage.redirect) {
+      sessionStorage.redirect = location.pathname + location.search + location.hash;
+    }
+    location.replace('/');
+  </script>
+</html>
+
+
